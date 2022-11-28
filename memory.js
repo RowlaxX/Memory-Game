@@ -74,15 +74,20 @@ function addPlayer2(name){
 
 function startGame() {
     if (player_names.length < 1){
-        alert("Not enough players");
+        alert("Not enough players.");
         return;
     }
 
-    var fsize = document.querySelector('input[name="field_size"]:checked').value.split(",");
-    var set = document.querySelector('input[name="card_set"]:checked').value;
+    try{
+        var fsize = document.querySelector('input[name="field_size"]:checked').value.split(",");
+        var set = document.querySelector('input[name="card_set"]:checked').value;
 
-    initGame(parseInt(fsize[0]), parseInt(fsize[1]), set, player_names);
-    showGameplay();
+        initGame(parseInt(fsize[0]), parseInt(fsize[1]), set, player_names);
+        showGameplay();
+    }catch(TypeError){
+        alert("Select card set & field size.");
+    }
+    
 }
 
 /*
